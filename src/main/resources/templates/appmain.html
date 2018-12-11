@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>eCryptDocumento - Secured Block Chain for file storage</title>
+<link rel="stylesheet" media="screen" href="/css/main.css" />
+
+<script th:inline="javascript">
+/*<![CDATA[*/
+function test() {
+  var url = /*[[${qrcode}]]*/ 'default';
+  alert(url);
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("POST", url, true);
+  xhttp.send();
+
+}
+/*]]>*/
+</script>
+</head>
+
+<body>
+	<div id="mainBody">
+		<a href="/">
+			<div id="heading">
+				<h1>eCrytpDocumento - Secured Block Chain for file storage</h1>
+			</div>
+		</a>
+		<div id="navigation">
+		<a href="/">Home</a>
+		</div>
+		
+		<div id="bodycontent">
+		<div th:if="${eterces!=null}" id="MessageBox">
+			<div th:if="${eterces != 'empty'}" >		
+				<b><span th:text="${eterces}"></span></b><br />
+				<p>Please open authenticator app in your mobile phone, and add the above code so that next time when you login you need to enter the secrete from that app</p>
+
+				<Br /><button onclick="test()">Display</button>
+				
+				<p id="demo"></p>
+				
+			</div>
+			<div th:if="${eterces == 'empty'}" >			
+				<p>User id cannot be empty! please fill and try again!</p>
+			</div>
+			
+		</div>
+		<table>
+			<tr>
+				<td>
+				<div id="logintable">
+					<h3>Already have secret?</h3>
+				  <form action="#" th:action="@{/login}" th:object="${userObj}" method="post" > 
+				  	<label for="fname" > User ID </label>
+				    <input type="text" name="userid" th:field="*{user}" placeholder="EMAIL ID"/>
+				    <label for="lname">Secret (Enter code from google authenticator)</label>
+				    <input type="text" name="secrete" th:field="*{secrete}" placeholder="Secret" />
+				    <input type="submit" name="action" value="Submit" />
+				  </form>
+				</div>
+				</td>
+				<td>
+				<div id="logintable">
+					<h3>Create secret?</h3>
+				  <form action="#" th:action="@{/login}" th:object="${userObj}" method="post" > 
+				    <label for="fname">Create UserID</label>
+				    <input type="text" name="userid" th:field="*{user}" placeholder="User Id (Usually your email).." />
+					<input type="submit" name="action" value="Get Code" />
+					<Br /><br />
+					
+				    <label for="lname">Enter Secret (Enter code from google authenticator)</label>
+				    <input type="text" name="secrete" th:field="*{secrete}" placeholder="Secret" />
+				  
+				    <input type="submit" name="action" value="Submit" />
+				  </form>
+				</div>
+				</td>
+			</tr>
+		</table>
+		</div>
+	</div>
+	<div id="footer">
+		Copyright 2018 all rights reserved rvk40413@gmail.com
+	</div>
+</body>
+
+</html>
