@@ -4,12 +4,18 @@ package com.rkvs.stBlockCh.core;
  */
 //import java.util.Date;
 import java.util.*;
+import java.util.Map.Entry;
+
+import com.bessapps.stBlockCh.model.UserDetails;
+import com.bessapps.stBlockCh.wrappers.DataStoreWrapper;
 
 /**
  * @author rsaladi
  *
  */
 public class MainBlockHandler {
+	
+	public static HashMap<Long, BlockHandler> hmap = new HashMap<Long, BlockHandler>();
 
 	/**
 	 * 1) Initializes the Application
@@ -24,62 +30,37 @@ public class MainBlockHandler {
     /*
      * Initialize all necessary blocks and variables
      */
-    private void initialize() {
+    public void initialize() {
         
     }
     
     /*
-     * This will updateData or Create new Block chain
+     * @RaviSaladi
      */
-    private long updateData(long docID, ArrayList<String> aList) {
-        boolean status = false;
-        
-        if(docID == 0) {
-            return 0;
-        }
-        
-        /* Check if file path is null, then it must be existing document*/
-        if(checkDocumentIDValid(docID) != false) {
-            status = sbh.updateData(docID, aList);
-            if(status == false) {
-                //Handle the error
-                return 0;
-            }
-        } else {
-            // This document id is not available inform the requestor
-            return 0;
-        }
-        return docID;        
+    public long createBlockHandler(UserDetails user) {
+    	Long blockID = blockHandlerSeqID++;
+    	BlockHandler bH = new BlockHandler(user, blockID);
+    	hmap.put(blockID, bH);   	
+    	return blockID;
+    	
     }
     
-    private boolean checkDocumentIDValid(long docID) {
-        boolean status = false;
-        
-        
-        return status;
+    public long getBlockHandlerSeqID() {
+    	return blockHandlerSeqID;
     }
-    
-    /*
-     * function overloading with file name
-     */
-    private long updateData(String fNANDP, ArrayList<String> aList) {
-        if(fNANDP == null) {
-            return 0;
-        }
-        
-        long docID = sbh.createBlockChain(fNANDP, aList);
-        if(docID == 0) {
-            // Handle error
-            return 0;
-        }
-        
-        return docID;
-    }
+ 	
+	private static long blockHandlerSeqID = 10000; /* default value */
 	
-	private BlockHandler sbh;
-	Date timeStamp;
-	String owner;
-	String privateKey;
-	String publicKey;
-
+	public void printBlockMap() {
+		/* Display content using Iterator*/
+		Set<Entry<Long, BlockHandler>> set = hmap.entrySet();
+		Iterator<Entry<Long, BlockHandler>> iterator = set.iterator();
+		while(iterator.hasNext()) {
+			Map.Entry mentry = (Map.Entry)iterator.next();
+			System.out.print("key is: "+ mentry.getKey() + " & Value is: ");
+			System.out.println(((BlockHandler) mentry.getValue()).getBlockID());
+		}
+		System.out.println("Printing done!");
+		
+	}
 }

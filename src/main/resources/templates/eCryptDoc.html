@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>eCryptDocumento - Secured Block Chain for file storage</title>
+<link rel="stylesheet" media="screen" href="/css/main.css" />
+</head>
+
+<body>
+	<div id="mainBody">
+		<a href="/">	
+			<div id="heading">
+			<h1>Block Chain applications Demo</h1>
+			</div>
+		</a>
+
+		<div id="navigation">
+			<a href="/">Home</a>
+			<div th:if="${session.activeuser != null}">
+				<a href="/logout">Logout</a>
+			</div>
+		</div>
+		
+		<div id="bodycontent">
+
+		<table>
+			<tr>
+				<td>
+				<div id="logintable">
+				  Welcome
+				  <b><span th:text="${session.activeuser.getUser()}"></span></b>
+				</div>
+				</td>
+				<td>
+					<h1>list of existing files</h1>
+					<button><a href="/addfile">Add a file</a></button>			
+				</td>
+			</tr>
+		</table>
+
+		</div>
+	</div>
+	<div id="footer">
+		Copyright 2018 all rights reserved rvk40413@gmail.com
+	</div>
+</body>
+
+</html>

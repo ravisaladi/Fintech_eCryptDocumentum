@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="/jsscripts/script1.js"></script>
+<script type="text/javascript" src="/jsscripts/qrcode.min.js"></script>
+<script type="text/javascript" src="/jsscripts/gen-qr-code.js"></script>
+</head>
+
+<body>
+	
+	<h1>Praise the lord Jesus</h1>
+	
+	<link rel="stylesheet" type="text/css" href="//cdn.hersam.com/css/highlightjs-hybrid.min.css" media="screen" />
+	<label for="label">Label</label><input id="label" type="text" value="Example" /><br />
+	<label for="user">User</label><input id="user" type="text" value="alice@google.com" /><br />
+	<label for="key">Key</label><input id="key" type="text" value="JBSWY3DPEHPK3PXP" /><br />
+	<label for="digits">Digits</label><input id="digits" type="text" placeholder="Optional - defaults to 6" /><br />
+	<label for="period">Period</label><input id="period" type="text" placeholder="Optional - defaults to 30" /><br />
+	<input type="button" value="Update" onClick="makeCode()" />	
+	<div>
+	  <label for="url">URL</label><br />
+	  <textarea id="url" style="height:8em; width: 85%" readonly="readonly"></textarea>
+	</div>
+	<div id="qrcode"></div>
+</body>
+
+</html>

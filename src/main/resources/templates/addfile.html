@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>eCryptDocumento - Secured Block Chain for file storage</title>
+<link rel="stylesheet" media="screen" href="/css/main.css" />
+</head>
+
+<body>
+	<div id="mainBody">
+		<a href="/">	
+			<div id="heading">
+			<h1>Block Chain applications Demo</h1>
+			</div>
+		</a>
+
+		<div id="navigation">
+			<a href="/">Home</a>
+			<div th:if="${session.activeuser != null}">
+				<a href="/logout">Logout</a>
+			</div>
+		</div>
+		
+		<div id="bodycontent">
+
+		<table>
+			<tr>
+				<td>
+				<div id="logintable">
+				  Welcome
+				  <b><span th:text="${session.activeuser.getUser()}"></span></b>
+				</div>
+				</td>
+				<td>
+				<div id="logintable">
+				  <h3>Add New File</h3>
+				  	<form action="#" th:action="@{/addblock}" th:object="${data}" method="post" enctype="multipart/form-data" > 
+				    <input type="file" name="file" id="myFile" /><Br /><br />
+				    <label for="lname">Description</label><br />
+				    <textarea rows="10" cols="50" th:field="*{description}" placeholder="Add Description here...."></textarea>  
+				    <br />
+				    <input type="submit" name="action" value="Submit1" />
+				  </form>
+				</div>				
+				</td>
+			</tr>
+		</table>
+
+		</div>
+	</div>
+	<div id="footer">
+		Copyright 2018 all rights reserved rvk40413@gmail.com
+	</div>
+</body>
+
+</html>

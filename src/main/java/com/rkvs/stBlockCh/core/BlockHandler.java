@@ -7,51 +7,38 @@ package com.rkvs.stBlockCh.core;
  * 
  */
 import java.util.*;
-import com.rkvs.stBlockCh.model.Block;
+import com.bessapps.stBlockCh.model.Block;
+import com.bessapps.stBlockCh.model.UserDetails;
 
 /**
  * @author rsaladi
  *
  */
 public class BlockHandler {
-
+	
+	private final long BlockIdentifier;
+	private long numOfBlocks = 0;
+	private String ownerName;
+	private String onwerSecret;
+	private Block blk;
+	private UserDetails owner;
+	
 	/**
-	 * 
+	 * @author rsaladi
 	 */
-	public BlockHandler() {
-		// TODO Auto-generated constructor stub
-        long range = 12345678999999L;
-        long min = 9999999999999999L;
-        Random r = new Random();
-        subBlockSeqID = (long)(r.nextDouble()*range)+min;
+	public BlockHandler(UserDetails user, long id) {
+		BlockIdentifier = id;
+		owner = user;
+		System.out.println("Praise the Lord jesus!");
+		System.out.println(owner.getUser() + " " + owner.getSecrete());
 	}
 	
-	private Block sb;
-	private Block root;
-	private long subBlockSeqID;
-	
-	public long getSubBlockSeqID() {
-		return subBlockSeqID;
+	public long getBlockID() {
+		return BlockIdentifier;
 	}
-    
-    /*
-     * This method will update existing data
-     */
-    public boolean updateData(long docID, ArrayList<String> aList) {
-        boolean status = false;
-        
-        
-        return status;
-    }
-    
-    /*
-     * This method will create new Block Chanin
-     */
-    public long createBlockChain(String filePath, ArrayList<String> aList) {
-        long blockID = 0;
-        
-        
-        return blockID;
-    }  
+	
+	public UserDetails getBlockOwner() {
+		return owner;
+	}
 
 }

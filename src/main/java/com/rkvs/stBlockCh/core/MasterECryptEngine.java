@@ -5,28 +5,56 @@ package com.rkvs.stBlockCh.core;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.bessapps.stBlockCh.model.UserDetails;
+import com.bessapps.stBlockCh.wrappers.DataStoreWrapper;
+
 /**
  * @author rsaladi
  *
  */
-public class MasterECryptEngine {
-
+public class MasterECryptEngine implements ECryptServices {
+	
+	private MainBlockHandler mBH;
+	
 	/**
 	 * 
 	 */
 	public MasterECryptEngine() {
 		// TODO Auto-generated constructor stub
+		mBH = new MainBlockHandler();
 	}
 	
-	private MainBlockHandler mBH;
+	/*
+	 * @RaviSaladi
+	 */
+	@Override
+	public void initECryptServices() {
+		System.out.println("In initECryptServices");
+	}
 	
+	/*
+	 * @RaviSaladi
+	 */
+	@Override
+	public long iniateBlock(UserDetails user) {
+		long bID = mBH.createBlockHandler(user);
+		//mBH.printBlockMap();
+		System.out.println("In iniateBlock");
+		return bID;
+	}
 	
-	public void insertBlock(String filePath, ArrayList<String> ls) {}
-	public void updateBlock(String userid, String passcode, ArrayList<String> ls) {}
+	@Override
+	public void insertDocument(DataStoreWrapper dsw) {
+		//mBH.insertBlock()
+		System.out.println("In insertDocument");
+		mBH.printBlockMap();
+	}
 	
-    /*
-     * 
-     */
-    private void createPublicPrivateKeys() { }
-
+	@Override
+	public void updateBlock(String userid, String passcode, String desc) {
+		long docID = 0;
+		//mBH.updateData(docID, desc);
+		System.out.println("In updateBlock");
+	}
+	
 }
