@@ -19,6 +19,13 @@ body, html {
 	background: #000000;
 	color: #33ff00;
 	border-radius: 0px 25px 0px 0px;
+	text-transform: uppercase;
+}
+
+#heading a {
+	text-decoration: none;
+	font-size: 20px;
+	color: #33ff00;
 }
 
 #navigation {
@@ -39,20 +46,27 @@ body, html {
 }
 
 #bodycontent a {
-	padding: 20px;
+	padding: 10px;
 }
 
 #bodycontent a:link, a:visited {
-  background-color: #f44336;
-  color: white;
-  padding: 14px 25px;
+  background-color: #8ae234;
+  color: black;
+  //padding: 14px 25px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  border-radius: 15px;
 }
 
 #bodycontent a:hover, a:active {
-  background-color: red;
+  background-color: #8ae234;
+}
+
+#bodycontent button {
+	border:2px solid #000;
+	background-color: #8ae234;
+	border-radius: 15px;
 }
 
 input[type=text] {
@@ -125,4 +139,13 @@ input[type=submit]:hover {
 #errormsg {
 	font-size: 24px;
 	color: red;
+}
+
+#blockdata span {
+	padding: 5px;
+	margin: 5px;
+}
+
+#blockdata h3 {
+	display: inline-block; 
 }

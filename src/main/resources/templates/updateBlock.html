@@ -32,13 +32,12 @@
 				</td>
 				<td>
 				<div id="logintable">
-				  <h3>Add New File</h3>
-				  	<form action="#" th:action="@{/addblock}" th:object="${data}" method="post" enctype="multipart/form-data" > 
-				    <input type="file" name="file" id="myFile" /><Br /><br />
-				    <label for="lname">Description</label><br />
+				  <h2>Updating file: <span th:text="${blkobj.getdStoreWrap().getFileName()}"></span></h2>
+				  	<form action="#" th:action="${'update'+blkobj.getBlockID()}" th:object="${data}" method="post" enctype="multipart/form-data" > 
+				    <label for="lname">Update the Description below</label><br />
 				    <textarea rows="10" cols="50" th:field="*{description}" placeholder="Add Description here...."></textarea>  
 				    <br />
-				    <input type="submit" name="action" value="Submit1" />
+				    <input type="submit" name="action" value="Submit" />
 				  </form>
 				</div>				
 				</td>

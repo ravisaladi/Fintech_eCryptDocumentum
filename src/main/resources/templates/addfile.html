@@ -13,10 +13,11 @@
 		</a>
 
 		<div id="navigation">
-			<a href="/">Home</a>
+			<a href="/index">Home</a>
 			<div th:if="${session.activeuser != null}">
 				<a href="/logout">Logout</a>
 			</div>
+			<a href="/test">Test</a>
 		</div>
 		
 		<div id="bodycontent">
@@ -26,7 +27,7 @@
 				<td>
 				<div id="logintable">
 				  Welcome
-				  <b><span th:text="${session.activeuser.getUser()}"></span></b>
+				  <b><span th:text="${session.activeuser}"></span></b>
 				</div>
 				</td>
 				<td>

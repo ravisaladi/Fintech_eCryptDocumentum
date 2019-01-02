@@ -6,23 +6,24 @@
 
 <body>
 	<div id="mainBody">
-		<a href="/">	
-			<div id="heading">
-			<h1>Block Chain applications Demo</h1>
-			</div>
-		</a>
+		<div id="heading">
+			<a href="/">
+				<h1>Block Chain Applications</h1>
+			</a>
+		</div>
 
 		<div id="navigation">
-			<a href="/">Home</a>
+			<a href="/index">Home</a>
 			<div th:if="${session.activeuser != null}">
 				<a href="/logout">Logout</a>
 			</div>
+			<a href="/test">Test</a>
 		</div>
 		
 		<div id="bodycontent">
 			<br /><br />
 			<h3>
-			<h2>eCrypt Documento</h2>
+			<h2>eCrypt Documentum</h2>
 			<p> Provides secure data storage in block chain, the mail purpose of this application to store important documents in a secured eCrypt where only the authorized users can update.
 			This application retains all the updated information in secured ledger which will cannot be modified or deleted.Hence it will provide very secure and reliable, easily adaptable solution for the business needs.</p>
 			Click here to Start eCryptoApplication<Br /><br />

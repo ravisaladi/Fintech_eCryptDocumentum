@@ -13,10 +13,11 @@
 		</a>
 
 		<div id="navigation">
-			<a href="/">Home</a>
+			<a href="/index">Home</a>
 			<div th:if="${session.activeuser != null}">
 				<a href="/logout">Logout</a>
 			</div>
+			<a href="/test">Test</a>
 		</div>
 		
 		<div id="bodycontent">
@@ -25,13 +26,27 @@
 			<tr>
 				<td>
 				<div id="logintable">
-				  Welcome
-				  <b><span th:text="${session.activeuser.getUser()}"></span></b>
+				  <h1>Welcome! <br /><b><span th:text="${session.activeuser}"></span></b></h1>
+				  <br /><h3>Add Files to your eCrypt!</h3>
+				  <button><a href="/addfile">Add a file</a></button>	
 				</div>
 				</td>
 				<td>
-					<h1>list of existing files</h1>
-					<button><a href="/addfile">Add a file</a></button>			
+					<h1>Files in your eCrypt!</h1>
+					<form action="#" th:action="@{/updatedata}" th:object="${mapsList}" method="post" enctype="multipart/form-data" > 
+						<div th:if="${mapsList != null}">
+						<ol>
+							<div th:each="userEntry: ${mapsList}" id="blockdata">
+								<!-- <span th:text="${userEntry.key}">No Id!</span>  -->
+								<li><h3><span th:text="${userEntry.value.getdStoreWrap().getFileName()}"></span></h3>								
+								<a th:href="${'/update@'+userEntry.key}">Updated</a><br /></li>
+							</div>
+						</ol>
+						</div>
+					</form>
+					  
+
+							
 				</td>
 			</tr>
 		</table>

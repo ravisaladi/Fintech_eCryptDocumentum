@@ -32,16 +32,19 @@ function alertme() {
 
 <body>
 	<div id="mainBody">
-		<a href="/">
-			<div id="heading">
-				<h1>eCrytpDocumento - Secured Block Chain for file storage</h1>
-			</div>
-		</a>
+		
+		<div id="heading">
+			<a href="/">
+				<h1>eCrytp Documentum<br />The Secure Block Chain Data Store</h1>
+			</a>
+		</div>
+		
 		<div id="navigation">
-			<a href="/">Home</a>
+			<a href="/index">Home</a>
 			<div th:if="${session.activeuser != null}">
 				<a href="/logout">Logout</a>
 			</div>
+			<a href="/test">Test</a>
 		</div>
 		
 		<div id="bodycontent">
@@ -60,42 +63,34 @@ function alertme() {
 			</div>
 			<div th:if="${eterces == 'empty'}" >	
 				<div id="errormsg">		
-					<p>User id cannot be empty! please fill and try again!</p>
+					<p>Please enter valid email id and click get code again!</p>
 				</div>	
 			</div>
 		</div>
+		 <form action="#" th:action="@{/login}" th:object="${userObj}" method="post" > 
 		<table>
 			<tr>
 				<td>
-				<div id="logintable">
-					<h3>Already have secret?</h3>
-				  <form action="#" th:action="@{/login}" th:object="${userObj}" method="post" > 
-				  	<label for="fname" > User ID </label>
-				    <input type="text" name="userid" th:field="*{user}" placeholder="EMAIL ID"/>
-				    <label for="lname">Secret (Enter code from google authenticator)</label>
-				    <input type="number" name="secrete" th:field="*{secrete}" placeholder="Secret" maxlength="6" />
-				    <input type="submit" name="action" value="Submit1" />
-				  </form>
-				</div>
-				</td>
-				<td>
-				<div id="logintable">
-					<h3>Create secret?</h3>
-				  <form action="#" th:action="@{/login}" th:object="${userObj}" method="post" > 
-				    <label for="fname">Create UserID</label>
+					<div id="logintable">
+					<h1>Login</h1>
+				    <label for="fname">Email ID</label>
 				    <input type="text" name="userid" th:field="*{user}" placeholder="User Id (Usually your email).." />
-					<input type="submit" name="action" value="Get Code" />
-					<Br /><br />
-					
-				    <label for="lname">Enter Secret to complete your registration!</label>
+					<br />
+				    <label for="lname">Enter Secret</label>
 				    <input type="number" name="secrete" th:field="*{secrete}" placeholder="Secret" maxlength="6" />
 				  
-				    <input type="submit" name="action" value="Submit2" />
-				  </form>
-				</div>
+				    <input type="submit" name="action" value="Submit" />
+				   	</div>
+				 </td>
+				 <td>
+				 	<div id="logintable">
+				    <h2>Don't you have an account? <br />Click below button to create secret...  <br /></h2>
+					<input type="submit" name="action" value="Get GAuthenticatino Code" />
+					</div>
 				</td>
 			</tr>
 		</table>
+		</form>
 		</div>
 	</div>
 	<div id="footer">
